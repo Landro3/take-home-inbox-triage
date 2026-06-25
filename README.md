@@ -103,3 +103,42 @@ Questions before you start? Email us. Once you open the scaffold, the clock is y
 ---
 
 <!-- ↓↓↓ CANDIDATE: add your "README the client could read" section here ↓↓↓ -->
+
+## Inbox Triage Agent — Client README
+
+### What it does
+
+This agent triages your customer support inbox. It fetches all incoming emails, classifies each into one of four buckets using an LLM, and proposes actions per a routing table:
+
+| Classification | Action |
+|---|---|
+| billing | Draft a reply to the customer |
+| bug_report | Post an alert to `#engineering` in Slack |
+| sales_lead | Draft a reply **and** create a CRM lead |
+| spam | No action — logged and dropped |
+
+Every proposed action is presented to a human for approval. Nothing executes without an explicit `y` — no replies, no Slack alerts, no CRM records. After all emails are reviewed, a summary is shown and a final gate asks for confirmation before any write operations occur.
+
+### How to run it
+
+You need an Anthropic API key.
+
+```bash
+# Copy and fill in the env template
+cp env.example .env
+# Set LLM_API_KEY=sk-ant-api-... and LLM_MODEL=claude-haiku-4-5-20251001
+
+# Terminal 1 — start the mock API
+make serve
+
+# Terminal 2 — run the triage agent
+uv run client.py
+
+# After a run, inspect what the agent did
+make audit
+```
+
+### Design decision I'm proudest of
+
+**Two-pass least privilege with per-action approval.** The agent runs in two distinct passes:
+Approvals are **per-action**, not per-email. For a `sales_lead` email, you can approve the reply but skip the CRM lead creation — the human stays in control at every granularity.
