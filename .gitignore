@@ -3,4 +3,6 @@ __pycache__/
 *.pyc
 .env
 .pytest_cache/
+.mutmut-cache/
+mutants/
 .DS_Store

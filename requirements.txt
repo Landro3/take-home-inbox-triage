@@ -7,3 +7,5 @@ python-dotenv>=1.0
 # LLM SDK — Anthropic is here as a convenience. You may swap in openai, or any
 # other provider's SDK; the task does not require a specific model vendor.
 anthropic>=0.40
+hypothesis>=6.0
+mutmut>=3.0
