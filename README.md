@@ -141,4 +141,4 @@ make audit
 ### Design decision I'm proudest of
 
 **Two-pass least privilege with per-action approval.** The agent runs in two distinct passes:
-Approvals are **per-action**, not per-email. For a `sales_lead` email, you can approve the reply but skip the CRM lead creation — the human stays in control at every granularity.
+Approvals are **per-action**, not per-email. For a `sales_lead` email, you can approve the reply but skip the CRM lead creation — the human stays in control for every decision.
