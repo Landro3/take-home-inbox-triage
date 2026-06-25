@@ -6,6 +6,8 @@
 **Name:** Andrew Landis
 **Time spent (be honest):** 1hr 15min
 
+NOTE: I used uv in my env for managing python things, so I ran `uv run src/client.py` to start the client, for example.
+
 ---
 
 ## How I broke the work down
