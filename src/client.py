@@ -17,7 +17,7 @@ import textwrap
 
 from dotenv import load_dotenv
 
-from src.triage_skill import TriageClient, TriageResult, ProposedAction, execute, triage_inbox
+from triage_skill import TriageClient, TriageResult, ProposedAction, execute, triage_inbox
 
 load_dotenv()
 
